@@ -24,6 +24,10 @@ void main() {
     test('to test the property `objectMap`', () async {
       final m = JsonDecoder().convert(s);
       final i = ItemsWithMapStringAnyWithPropsTrue.fromJson(m)!;
+
+      /* this fails because of the incorrect type assertion in mapValueOfType */
+      assert(i.objectMap.isNotEmpty);
+
       assert(i.objectMap["item_int"] == 1);
       assert(i.objectMap["item_bool"] == true);
       assert(i.objectMap["item_string"] == "str");

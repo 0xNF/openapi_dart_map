@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  version: "1.1"
+  title: Dart Bad Map
+servers:
+  - url: 'localhost'
+    variables:
+      host:
+        default: localhost
+components:
+  schemas:
+    ItemsWithMapStringAnyWithPropsTrue:
+      type: object
+      description: "map-string-any defined with `additionalProperties: true`"
+      properties:
+        objectMap:
+          type: object
+          additionalProperties: true
+paths:
+  /items:
+    get:
+      operationId: GetItemWithMapStringObjects
+      responses:
+        "200":
+          description: A list of ItemWithMapStringObject
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsWithMapStringAnyWithPropsTrue'
